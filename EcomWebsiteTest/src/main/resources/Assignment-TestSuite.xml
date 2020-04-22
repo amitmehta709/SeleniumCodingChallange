@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="ProductPurchase" parallel="classes" thread-count="3">
+	<test name="ChromeTest">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class
+				name="com.assignment.selenium.testvagrant.ecom.testcsnarios.ValidatePriceOnCountIncrement"/>
+			<class
+				name="com.assignment.selenium.testvagrant.ecom.testcsnarios.AddFeaturedCollectionProduct" />
+			<class
+				name="com.assignment.selenium.testvagrant.ecom.testcsnarios.AddProductsWithMultipleSizes" />
+		</classes>
+	</test>
+	<test name="FirefoxTest">
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class
+				name="com.assignment.selenium.testvagrant.ecom.testcsnarios.ValidatePriceOnCountIncrement"/>
+			<class
+				name="com.assignment.selenium.testvagrant.ecom.testcsnarios.AddFeaturedCollectionProduct" />
+			<class
+				name="com.assignment.selenium.testvagrant.ecom.testcsnarios.AddProductsWithMultipleSizes" />
+		</classes>
+	</test>
+</suite>
