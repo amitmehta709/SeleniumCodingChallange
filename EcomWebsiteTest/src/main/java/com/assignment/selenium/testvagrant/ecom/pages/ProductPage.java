@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.Select;
 
 import com.assignment.selenium.testvagrant.lib.pages.PageObject;
 import com.assignment.selenium.testvagrant.lib.utils.DriverUtils;
@@ -61,5 +62,14 @@ public class ProductPage extends PageObject {
 		DriverUtils.waitForPageLoad(getDriver());
 		DriverUtils.waitForElement(getDriver(), cntShoppingBtn);
 		cntShoppingBtn.click();
+	}
+	
+	public void selectSize(String value)
+	{
+		DriverUtils.waitForPageLoad(getDriver());
+		DriverUtils.waitForElement(getDriver(), sizeDrpDown);
+		
+		Select drpDownElement = new Select(sizeDrpDown);
+		drpDownElement.selectByValue(value);
 	}
 }

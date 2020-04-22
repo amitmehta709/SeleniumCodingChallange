@@ -29,6 +29,9 @@ public class HomePage extends PageObject {
 	@FindBy(how = How.XPATH, using = "//button[@class='search-bar__submit search-form__submit']")
 	public WebElement searchSubmitBtn;
 	
+	@FindBy(how = How.XPATH, using = "//ul[@class='grid grid--uniform grid--view-items']")
+	public WebElement featuredCollectionGrid;
+	
 	public boolean verifyHomePage()
 	{
 		DriverUtils.waitForPageLoad(getDriver());
@@ -63,6 +66,22 @@ public class HomePage extends PageObject {
 		
 		product.click();
 		
+	}
+	
+	public String addFeaturedCollectionProduct()
+	{
+		DriverUtils.scrollDown(getDriver(), featuredCollectionGrid);
+		List<WebElement> featuredProductDescList= getDriver().findElements(By.xpath("//div[@class='grid-view-item product-card']/div[@class='h4 grid-view-item__title product-card__title']"));
+		
+		WebElement featuredproductDesc  = featuredProductDescList.get(0);
+		
+		String featuredProductName = featuredproductDesc.getText();
+		
+		List<WebElement> featuredProductList = getDriver().findElements(By.xpath("//a[@class='grid-view-item__link grid-view-item__image-container full-width-link']"));
+		WebElement featuredproduct  = featuredProductList.get(0);
+		featuredproduct.click();
+		
+		return featuredProductName;
 	}
 
 }

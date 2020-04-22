@@ -41,9 +41,6 @@ public class ValidatePriceOnCountIncrement extends EcomTestTemplates {
 		cartPage.increaseQuantity("2");
 		double incrementedPrice = cartPage.getPrice();
 		System.out.println(incrementedPrice);
+		cartPage.checkoutCart();
 	}
-	
-	@AfterMethod
-	public void signout()
-	{}
 }

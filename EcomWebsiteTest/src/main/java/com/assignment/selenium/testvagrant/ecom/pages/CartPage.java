@@ -22,6 +22,9 @@ public class CartPage extends PageObject {
 	
 	@FindBy(how = How.XPATH, using = "//td[@class='cart__final-price text-right small--hide']/div/span")
 	public WebElement priceLbl;
+
+	@FindBy(how = How.XPATH, using = "//input[@name='checkout']")
+	public WebElement checkoutBtn;
 	
 	public boolean verifyCartPage()
 	{
@@ -53,6 +56,12 @@ public class CartPage extends PageObject {
 		
 		return numericPrice;
 		
+	}
+	
+	public void checkoutCart()
+	{
+		DriverUtils.scrollDown(getDriver(), checkoutBtn);
+		checkoutBtn.click();
 	}
 	
 	
