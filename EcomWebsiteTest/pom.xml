@@ -8,4 +8,49 @@
   <groupId>com.assignment.selenium.testvagrant</groupId>
   <artifactId>EcomWebsiteTest</artifactId>
   <name>EcomWebsiteTest</name>
+  
+  	<dependencies>
+		<dependency>
+			<groupId>com.assignment.selenium.testvagrant</groupId>
+			<artifactId>AutomationFramework</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.0</version>
+				<configuration>
+					<suiteXmlFiles>
+						<file>${project.basedir}/src/main/resources/${testngxml}</file>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<id>TestNG_Default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<testngxml>Assignment-TestSuite.xml</testngxml>
+			</properties>
+		</profile>
+		<profile>
+			<id>TestNGp</id>
+			<activation>
+				<property>
+					<name>testngxml</name>
+				</property>
+			</activation>
+			<properties>
+				<testngxml>${testngxml}</testngxml>
+			</properties>
+		</profile>
+	</profiles>
 </project>
