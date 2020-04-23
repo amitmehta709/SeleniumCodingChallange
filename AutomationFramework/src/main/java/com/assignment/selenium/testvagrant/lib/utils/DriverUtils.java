@@ -1,7 +1,12 @@
 package com.assignment.selenium.testvagrant.lib.utils;
 
+import java.io.File;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -87,5 +92,31 @@ public class DriverUtils {
 
 		new WebDriverWait(driver, wait).until(webDriver -> ((JavascriptExecutor) webDriver)
 				.executeScript("return document.readyState").equals("complete"));
+	}
+	
+	public static String captureScreenShots(WebDriver driver, String scenario) {
+		try {
+			File f = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			// Setting file name
+			String folderPath = System.getProperty("user.dir");
+			
+			String fileName = scenario
+					+ TestParameters.UNDERSCORE 
+					+ System.currentTimeMillis()
+					+ ".jpg";
+			String filePath = folderPath 
+					+ File.separator
+					+ TestParameters.Screenshots 
+					+ File.separator
+					+ fileName;
+
+			// copy screenshot file into screenshot folder.
+			FileUtils.copyFile(f, new File(filePath));
+			return filePath;
+			
+		} catch (Exception e) {
+			throw new RuntimeException("Failed to Capture Screenshot (scenario:"
+					+ scenario + ")due to " + e);
+		}
 	}
 }

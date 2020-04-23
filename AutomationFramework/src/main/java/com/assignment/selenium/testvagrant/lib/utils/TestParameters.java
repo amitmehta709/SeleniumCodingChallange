@@ -8,4 +8,6 @@ public class TestParameters {
 	public final static String FIREFOX = "firefox";
 	public final static String TRUE = "true";
 	public final static String FALSE = "false";
+	public final static String UNDERSCORE = "_";
+	public final static String Screenshots = "Screenshots";
 }

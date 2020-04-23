@@ -1,5 +1,6 @@
 package com.assignment.selenium.testvagrant.ecom.testcsnarios;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 
 import org.testng.Assert;
@@ -13,8 +14,12 @@ import com.assignment.selenium.testvagrant.ecom.pages.LoginPage;
 import com.assignment.selenium.testvagrant.ecom.pages.ProductPage;
 import com.assignment.selenium.testvagrant.ecom.templates.EcomTestTemplates;
 import com.assignment.selenium.testvagrant.lib.report.ExtentTestNGReportBuilder;
+import com.assignment.selenium.testvagrant.lib.utils.DriverUtils;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.MediaEntityModelProvider;
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.Markup;
 
 public class AddFeaturedCollectionProduct extends EcomTestTemplates {
 
@@ -29,12 +34,13 @@ public class AddFeaturedCollectionProduct extends EcomTestTemplates {
 	}
 	
 	@Test
-	public void addFeaturedProduct() throws InterruptedException
+	public void addFeaturedProduct() throws InterruptedException, IOException
 	{
 		testInfo.log(Status.INFO, "Perforing Login");
 		LoginPage loginPage = new LoginPage(getDriver());
 		loginPage.performLogin();
 		testInfo.log(Status.INFO, "Searching Product");
+		testInfo.log(Status.INFO,"LoginPerformed", MediaEntityBuilder.createScreenCaptureFromPath(DriverUtils.captureScreenShots(getDriver(), "AddFeaturedProduct"), "Performed Login Screenshot").build());
 		HomePage homePage = new HomePage(getDriver());
 		Assert.assertEquals(homePage.verifyHomePage(), true);
 		String productTitle = homePage.addFeaturedCollectionProduct();
@@ -43,6 +49,8 @@ public class AddFeaturedCollectionProduct extends EcomTestTemplates {
 		Assert.assertEquals(productPage.verifyProduct(productTitle),true);
 		productPage.addToCart();
 		productPage.viewCart();
+		
+		
 		
 	}
 	@AfterMethod(alwaysRun = true)
