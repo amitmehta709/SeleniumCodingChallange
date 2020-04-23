@@ -11,7 +11,7 @@
  	<selenium.version>3.141.59</selenium.version>
 	<testng.version>6.14.3</testng.version>
 	<webdrivermanager.version>3.4.0</webdrivermanager.version>
-	<extentreports.version>4.1.5</extentreports.version>
+	<extentreports.version>3.1.5</extentreports.version>
   </properties>
   
   <dependencies>

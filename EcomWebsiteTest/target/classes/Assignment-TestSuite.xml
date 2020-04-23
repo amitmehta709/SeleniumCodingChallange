@@ -13,15 +13,4 @@
 				name="com.assignment.selenium.testvagrant.ecom.testcsnarios.AddProductsWithMultipleSizes" />
 		</classes>
 	</test>
-	<test name="FirefoxTest">
-		<parameter name="browser" value="firefox" />
-		<classes>
-			<class
-				name="com.assignment.selenium.testvagrant.ecom.testcsnarios.ValidatePriceOnCountIncrement"/>
-			<class
-				name="com.assignment.selenium.testvagrant.ecom.testcsnarios.AddFeaturedCollectionProduct" />
-			<class
-				name="com.assignment.selenium.testvagrant.ecom.testcsnarios.AddProductsWithMultipleSizes" />
-		</classes>
-	</test>
 </suite>

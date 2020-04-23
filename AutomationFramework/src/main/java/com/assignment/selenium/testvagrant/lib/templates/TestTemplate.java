@@ -8,7 +8,9 @@ import java.util.Properties;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
 
-public abstract class TestTemplate {
+import com.assignment.selenium.testvagrant.lib.report.ExtentTestNGReportBuilder;
+
+public abstract class TestTemplate extends ExtentTestNGReportBuilder {
 
 	private Map<String, String> testParameters;
 	
