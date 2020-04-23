@@ -196,3 +196,8 @@
 [0423/014901.356:ERROR:process_memory_win.cc(73)] ReadMemory at 0x7a64f50 of 528 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
 [0423/014901.356:ERROR:process_memory_win.cc(73)] ReadMemory at 0x12da9139 of 512 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
 [0423/014901.361:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0423/114543.185:ERROR:file_io_win.cc(161)] CreateFile C:\Users\ABO~1.KUM\AppData\Local\Temp\scoped_dir13320_988921604\Crashpad\settings.dat: The system cannot find the path specified. (0x3)
+[0423/114543.302:ERROR:file_io_win.cc(170)] CreateFile C:\Users\ABO~1.KUM\AppData\Local\Temp\scoped_dir13320_988921604\Crashpad\reports\40dd6014-28c3-4943-95e4-87fff66c157d.dmp: The system cannot find the path specified. (0x3)
+[0423/114543.302:ERROR:crash_report_exception_handler.cc(97)] PrepareNewCrashReport failed
+[0423/114547.419:ERROR:crash_report_database_win.cc(558)] GetFileAttributes C:\Users\ABO~1.KUM\AppData\Local\Temp\scoped_dir25200_1102826495\Crashpad: The system cannot find the file specified. (0x2)
+[0423/131248.590:ERROR:prune_crash_reports.cc(35)] PruneCrashReportDatabase: Failed to get pending reports

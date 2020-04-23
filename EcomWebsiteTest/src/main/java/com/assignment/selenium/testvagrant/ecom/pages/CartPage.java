@@ -1,5 +1,7 @@
 package com.assignment.selenium.testvagrant.ecom.pages;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,11 +9,18 @@ import org.openqa.selenium.support.How;
 
 import com.assignment.selenium.testvagrant.lib.pages.PageObject;
 import com.assignment.selenium.testvagrant.lib.utils.DriverUtils;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
 
 public class CartPage extends PageObject {
 
-	public CartPage(WebDriver driver) {
+	private ExtentTest testInfo;
+	private String testName;
+	public CartPage(WebDriver driver, String testName, ExtentTest extentTest ) {
 		super(driver);
+		this.testName = testName;
+		this.testInfo = extentTest;
 	}
 	
 	@FindBy(how = How.XPATH, using = "//h1[@class='cart-header__title']")
@@ -26,22 +35,24 @@ public class CartPage extends PageObject {
 	@FindBy(how = How.XPATH, using = "//input[@name='checkout']")
 	public WebElement checkoutBtn;
 	
-	public boolean verifyCartPage()
+	public boolean verifyCartPage() throws IOException
 	{
 		DriverUtils.waitForPageLoad(getDriver());
 		if(DriverUtils.checkElement(cartTitle))
 		{
+			testInfo.log(Status.INFO,"Verified Cart Page", MediaEntityBuilder.createScreenCaptureFromPath(DriverUtils.captureScreenShots(getDriver(), testName)).build());
 			return true;
 		}
 		return false;
 	}
 	
-	public void increaseQuantity(String count)
+	public void increaseQuantity(String count) throws IOException
 	{
 		DriverUtils.waitForElement(getDriver(), quantityField);
 		quantityField.clear();
-		quantityField.click();
-		quantityField.sendKeys(count);			
+		quantityField.sendKeys(count);
+		DriverUtils.sleep();
+		testInfo.log(Status.INFO,"Entered New Quantity in Quantity Field", MediaEntityBuilder.createScreenCaptureFromPath(DriverUtils.captureScreenShots(getDriver(), testName)).build());
 	}
 	
 	public double getPrice()
@@ -58,10 +69,13 @@ public class CartPage extends PageObject {
 		
 	}
 	
-	public void checkoutCart()
+	public void checkoutCart() throws IOException
 	{
 		DriverUtils.scrollDown(getDriver(), checkoutBtn);
+		testInfo.log(Status.INFO,"Scrollled Down for Checkout Button", MediaEntityBuilder.createScreenCaptureFromPath(DriverUtils.captureScreenShots(getDriver(), testName)).build());
+		
 		checkoutBtn.click();
+		testInfo.log(Status.INFO,"Clicked on Checkout Button", MediaEntityBuilder.createScreenCaptureFromPath(DriverUtils.captureScreenShots(getDriver(), testName)).build());
 	}
 	
 	
