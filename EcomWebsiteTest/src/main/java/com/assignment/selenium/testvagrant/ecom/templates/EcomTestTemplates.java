@@ -12,7 +12,6 @@ public class EcomTestTemplates extends SeleniumTestTemplate {
 	@BeforeMethod(alwaysRun = true)
 	public void getInfo() {
 		if (getDriver() == null) {
-			//TestLog.log("Failed to launch browser!");
 			return;
 		}
 		url = AutomationProperties.getProperty("tesvagrant.assignment.selenium.ecom.url");

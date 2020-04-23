@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 import com.assignment.selenium.testvagrant.lib.pages.PageObject;
+import com.assignment.selenium.testvagrant.lib.utils.AutomationProperties;
 import com.assignment.selenium.testvagrant.lib.utils.DriverUtils;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -45,7 +46,7 @@ public class LoginPage extends PageObject {
 			testInfo.log(Status.INFO,"Clicked on Enter Password Button", MediaEntityBuilder.createScreenCaptureFromPath(DriverUtils.captureScreenShots(getDriver(), testName)).build());
 			
 			DriverUtils.waitForElement(getDriver(), passwordField);
-			passwordField.sendKeys("idgad");
+			passwordField.sendKeys(AutomationProperties.getProperty("tesvagrant.assignment.selenium.ecom.password"));
 			testInfo.log(Status.INFO,"Entered Password", MediaEntityBuilder.createScreenCaptureFromPath(DriverUtils.captureScreenShots(getDriver(), testName)).build());
 			
 			DriverUtils.waitForElement(getDriver(), enterBtn);
